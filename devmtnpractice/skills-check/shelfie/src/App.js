@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import axios from "axios";
 
 //components
 import Dashboard from "./Components/Dashboard/Dashboard"
@@ -11,30 +12,22 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      inventory: [{
-        name: "Purse",
-        price: "100",
-        imgurl: ''
-      }, {
-      name: 'Shirt',
-      price: "400",
-      imgurl: ''
-      }, {
-      name: "Pants",
-      price: "expensive",
-      imgurl: ""
-      }, {
-        name: "Shoes",
-        price: "free",
-        imgurl: ""
-      }
-    ]
+      inventory: []
     }
   }
 
-  //method to get inventory from the database 
+//method to get inventory from the database 
+componentDidMount(){
+  axios.get("/api/inventory")
+  .then(response => {
+    this.setState({ inventory: response.data})
+    console.log("it worked!!")
+  // })
+  }).catch(error => {
+    console.log(error)
+  })
+}
 
-  
 render(){
   return (
     <div className="App">

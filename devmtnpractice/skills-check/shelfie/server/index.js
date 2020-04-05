@@ -5,19 +5,26 @@ const app = express()
 const { getInventory } = require("./controller")
 
 const { SERVER_PORT, DB_STRING } = process.env
+//middleware
 app.use(express.json())
 
+//endpoints 
+app.get("/api/inventory", getInventory)
+// app.post("/api/inventory")
+
+//connecting to the database 
 massive(DB_STRING)
     .then(db => {
     app.set('db', db);
     console.log('db linked')
+    app.listen(SERVER_PORT, () => {
+        console.log(`server has ears and is listening on the port`)
+    })
+   
 })
-    .catch(err => console.log(err) )
 
-//endpoints
-app.get("/api/inventory", getInventory);
-// app.post("/api/inventory")
 
-app.listen(SERVER_PORT, () => {
-    console.log(`server has ears and is listening on the port`)
-})
+
+
+
+
