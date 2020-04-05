@@ -34,11 +34,10 @@ render(){
   return (
     <div className="App">
       <Header />
-       <Dashboard inventory={this.state.inventory}/>
-       {/* <Dashboard /> */}
+      <div className="homepage">
+      <Dashboard inventory={this.state.inventory}/>
       <Form props={this.componentDidMount}/>
-      {/* <Product />
-      <Product /> */}
+      </div>
     </div>
     );
   }
