@@ -14,7 +14,9 @@ class App extends Component {
     this.state = {
       inventory: []
     }
+    this.componentDidMount = this.componentDidMount.bind(this)
   }
+
 
 //method to get inventory from the database 
 componentDidMount(){
@@ -34,7 +36,7 @@ render(){
       <Header />
        <Dashboard inventory={this.state.inventory}/>
        {/* <Dashboard /> */}
-      <Form />
+      <Form props={this.componentDidMount}/>
       {/* <Product />
       <Product /> */}
     </div>

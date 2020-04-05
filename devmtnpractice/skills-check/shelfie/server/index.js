@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require("express")
 const massive = require("massive")
 const app = express()
-const { getInventory } = require("./controller")
+const { getInventory, addProduct } = require("./controller")
 
 const { SERVER_PORT, DB_STRING } = process.env
 //middleware
@@ -10,7 +10,7 @@ app.use(express.json())
 
 //endpoints 
 app.get("/api/inventory", getInventory)
-// app.post("/api/inventory")
+app.post("/api/product", addProduct)
 
 //connecting to the database 
 massive(DB_STRING)
