@@ -2,15 +2,16 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 // import Dashboard from "../Dashboard/Dashboard"
-import store, {UPDATE_STEPONE} from "./../../store";
+import store, {UPDATE_STEPTHREE} from "./../../store";
 
 
 export default class StepOne extends Component {
     constructor(){
+        const reduxState = store.getState()
         super()
         this.state = {
-            mortgage: '',
-            rent: ''
+            mortgage: reduxState?.mortgage,
+            rent: reduxState?.rent
         }
         this.handleClick = this.handleClick.bind(this)
     }
@@ -31,6 +32,18 @@ export default class StepOne extends Component {
         
         
     }
+
+    componentDidMount() {
+        store.subscribe(() => {
+    const reduxState = store.getState();
+    this.setState({
+        mortgage: reduxState?.mortgage,
+        rent: reduxState?.rent
+    })
+       
+    })}
+
+
 
     render(){
         return (

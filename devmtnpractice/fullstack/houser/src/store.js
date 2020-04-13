@@ -20,25 +20,19 @@ const initialState = {
 // export const UPDATE_RENT = "UPDATE_RENT";
 
 export const UPDATE_STEPONE = "UPDATE_STEPONE";
+export const UPDATE_STEPTWO = "UPDATE_STEPTWO";
+export const UPDATE_STEPTHREE = "UPDATE_STEPTHREE";
 
 const reducer = (state = initialState, action) => {
     const {type, payload} = action;
     switch (type) {
-        // case UPDATE_NAME:
-        //     return { ...state, name: payload };
-        // case UPDATE_ADDRESS: 
-        //     return { ...state, address: payload };
-        // case UPDATE_CITY:
-        //     return { ...state, city: payload };
-        // case UPDATE_ZIP:
-        //     return { ...state, zip: payload };
-        // case UPDATE_IMG: 
-        //     return { ...state, img: payload };
-        // case UPDATE_MORTGAGE: 
-        //     return { ...state, mortgage: payload };
-        // case UPDATE_RENT:
-        //     return { ...state, rent: payload };
         case UPDATE_STEPONE: {
+            return { ...state, ...payload}
+        }
+        case UPDATE_STEPTWO: {
+            return { ...state, ...payload}
+        }
+        case UPDATE_STEPTHREE: {
             return { ...state, ...payload}
         }
         default: 

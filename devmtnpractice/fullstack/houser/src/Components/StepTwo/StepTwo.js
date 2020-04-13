@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 // import axios from "axios";
 // import Dashboard from "../Dashboard/Dashboard"
-import store, {UPDATE_STEPONE} from "./../../store";
+import store, {UPDATE_STEPTWO} from "./../../store";
 
 
 export default class StepOne extends Component {
@@ -46,13 +46,24 @@ this.setState({
         
     // }
 
+    handleClick = () => {
+        const reduxState = store.getState()
+        store.dispatch({
+            type: UPDATE_STEPTWO,
+            payload: {
+               img: reduxState?.img
+            }
+        })
+    }
+
     render(){
         return (
             <>
             <div>I am the StepTwo file</div>
             <p>Image URL</p>
             <input name='img' onChange={this.handleChange}  value={this.state.img} placeholder="image"></input>
-            <button><Link to="/wizard/step3">Next Step</Link></button>
+            <button onClick={this.handleClick}><Link to="/wizard/step3">Next Step</Link></button>
+            <button onClick={this.handleClick}><Link to="/wizard/step1">Previous Step</Link></button>
             </>
         )
     }
