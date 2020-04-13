@@ -44,7 +44,7 @@ export default class Dashboard extends Component {
                 <div>
                     <div class="border dashboard">
             <h1>Dashboard</h1>
-            <Link to="/wizard"><button className="addToProperty">Add New Property</button></Link>
+            <Link to="/wizard/step1"><button className="addToProperty">Add New Property</button></Link>
             </div>
             </div>
                     <div className="list">

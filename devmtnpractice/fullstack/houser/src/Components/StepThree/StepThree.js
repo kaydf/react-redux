@@ -1,19 +1,47 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
+import axios from "axios";
+// import Dashboard from "../Dashboard/Dashboard"
+import store, {UPDATE_STEPONE} from "./../../store";
 
-class StepThree extends Component {
+
+export default class StepOne extends Component {
     constructor(){
         super()
         this.state = {
-
+            mortgage: '',
+            rent: ''
         }
+        this.handleClick = this.handleClick.bind(this)
     }
+
+    handleClick = () => {
+        const {mortgage, rent} = this.state
+        axios.post("/api/home", {
+            mortgage,
+            rent
+        }).then(response => {
+            this.setState({
+               mortgage: 0,
+               rent: 0
+            })
+        }).catch(error => {
+            console.log(error)
+        })
+        
+        
+    }
+
     render(){
         return (
-            <div>
-                <h1>I am Step Three </h1>
-            </div>
+            <>
+            <div>I am the StepThree file</div>
+                <p>Monthly Mortgage Amount</p>
+            <input name="mortgage" onChange={this.handleChange} value={this.state.mortgage} placeholder="0"></input>
+                 <p>Desired Monthly Rent</p>
+            <input name="rent" onChange={this.handleChange} value={this.state.rent} placeholder="0"></input>
+            <Link to="/"><button onClick={this.handleClick}>complete</button> </Link>
+            </>
         )
     }
 }
-
-export default StepThree;
